@@ -1,0 +1,56 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container-full{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../pictures/imgs/mexico.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container-full::before{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    content: "";
+    background-color: rgba(0,0,0,0.3);
+}
+
+.login{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    height: 30rem;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+}
+
+.circle-img{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 90px;
+    overflow: hidden;
+    border: 2px solid #fff;
+    box-shadow: 0px 0px 10px rgba(120, 198, 249,0.5);
+    margin: auto;
+}
+
+.circle-img img{
+    height: 100%;
+}

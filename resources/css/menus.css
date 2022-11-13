@@ -1,0 +1,124 @@
+@font-face {
+    font-family: 'Louis';
+    src: url('../fonts/LouisGeorgeCafe.ttf');
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.nav-bar{
+    display: flex;
+    align-self: center;
+    align-content: center;
+    height: 80px;
+    padding: 10px;
+    width: 100%;
+    background-color: #2E4053;
+}
+
+.icon-box{
+    width: 60%;
+    overflow: hidden;
+}
+
+.icon-box img{
+    height: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.nav-title{
+    font-size: 23px;
+    color: #fff;
+    font-family: 'Louis';
+}
+
+.option-box{
+    width: 40%;
+    display: flex;
+    align-self: center;
+}
+
+.main-menu{
+    width: 100%;
+    display: flex;
+    list-style: none;
+}
+
+.main-menu li{
+    flex-grow: 1;
+    text-align: center;   
+}
+
+.main-menu li a{
+    text-align: center;
+    background-color: #D0D3D4;
+    padding: 10px 16px 10px 16px;
+    border-radius: 90px;
+    transition: all 0.5s;
+    font-size: 20px;
+}
+
+.main-menu li a:hover{
+    background-color: #2E4053;
+    color: #fff;
+    transition: all 0.5s;
+}
+
+.sub-main-menu{
+    width: 12rem;
+    background-color: rgba(46, 64, 83,0.5);
+    position: absolute;
+    padding: 0px;
+    box-sizing: border-box;
+    top: -180px;
+    right: -150px;
+    display: none;
+    transition: all 0.5s;
+}
+
+.submain{
+    list-style: none;
+    padding: 0px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.submain-item{
+    text-align: left;
+    background: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.submain-item:nth-child(1):hover{
+    background-color: #2E4053;
+    color: #fff;
+    transition: all 0.5s;
+}
+
+.submain-item:nth-child(2):hover{
+    background-color: #2E4053;
+    color: #fff;
+    transition: all 0.5s;
+}
+
+.sub-opt{
+    font-size: 15px;
+    font-family: 'Louis';
+    background: none;
+    text-decoration: none;
+    font-size: #000;
+}
+
+.activo{
+    top: 80px;
+    right: 5px;
+    display: block;
+    transition: 0.5s;
+    z-index: 2;
+}
