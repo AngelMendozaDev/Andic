@@ -1,6 +1,6 @@
 /**************
 * Base de datos para ANDIC A.C.
-* Realizada: 16-01-2022
+* Realizada: 13-11-2022
 * Creo: Mendoza Garcia Luis Angel
 ********************/
 drop database andic;

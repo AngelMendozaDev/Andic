@@ -34,7 +34,7 @@ if (isset($_SESSION['ID'])) {
         <div class="option-box">
             <ul class="main-menu">
                 <li>
-                    <a href="" class="circle-opt">
+                    <a href="main.php" class="circle-opt">
                         <i class="fa fa-home" aria-hidden="true"></i>
                     </a>
                 </li>
@@ -52,19 +52,20 @@ if (isset($_SESSION['ID'])) {
             <div class="sub-main-menu" id="sub-main">
                 <ul class="submain">
                     <li class="submain-item">
-                        <a href="" class="sub-opt">
+                        <a href="https://api.whatsapp.com/send?phone=525535512583&text=Hola%20buenas%20noches,%20solicito%20soporte%20tecnico" target="_blank" class="sub-opt">
                             Soporte Tecnico
                         </a>
                     </li>
                     <li class="submain-item">
-                        <a href="" class="sub-opt">
+                        <a href="password.php" class="sub-opt">
                             Cambiar Contraseña
                         </a>
                     </li>
                     <hr class="separador">
-                    <li class="submain-item">
+                    <li class="text-center">
                         <a href="" class="sub-opt">
                             <button class="btn btn-danger">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
                                 Cerrar Sesión
                             </button>
                         </a>
@@ -76,10 +77,23 @@ if (isset($_SESSION['ID'])) {
     </header>
 
     <div class="menu-lateral">
+        <div class="control-box">
+            <input type="checkbox" id="status-side" hidden>
+            <label for="status-side" id="open-side">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </label>
+            <label for="status-side" id="close-side">
+                <i class="fa fa-times-circle" aria-hidden="true"></i>
+            </label>
+        </div>
         <div class="menu-head">
             <div class="img-box">
-                <img src="../resources/pictures/icons/Logo.png" alt="">
+                <img src="../resources/pictures/photos/no_data.png" alt="">
             </div>
+            <br>
+            <h4 class="user-name">
+                <?php echo $_SESSION['NAME']; ?>
+            </h4>
         </div>
         <hr class="separador">
         <div class="menu-body">
@@ -103,12 +117,12 @@ if (isset($_SESSION['ID'])) {
                                 </li>
                                 <li class="sub-option">
                                     <a href="">
-
+                                        Option2
                                     </a>
                                 </li>
                                 <li class="sub-option">
                                     <a href="">
-
+                                        Option3
                                     </a>
                                 </li>
                             </ul>
