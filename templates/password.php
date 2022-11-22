@@ -22,8 +22,13 @@
 
     <div class="row text-center">
         <div class="col-12">
-            <form method="POST" onsubmit="return false" id="form-pass">
-                <input type="password" class="my-input" maxlength="20" placeholder="Ingresa Tu contraseña actual" id="Actual" name="actual" required>
+            <form method="POST" onsubmit="return setPass()" id="form-pass">
+                <div class="pass-cont">
+                    <input type="password" class="my-input" maxlength="20" placeholder="Ingresa Tu contraseña actual" id="Actual" name="actual" required>
+                    <span class="text-errorA" id="messageA">
+                        La Contraseña actual es Erronea
+                    </span>
+                </div>
                 <hr class="separador" style="color: #000; margin-top: 30px; margin-bottom: 30px;">
                 <div class="pass-cont">
                     <input type="password" class="my-input" maxlength="20" placeholder="Ingresa tú nueva Contraseña" id="Pass1" name="pass1" required>
@@ -38,7 +43,7 @@
                     </span>
                 </div>
 
-                <button class="btn btn-success">
+                <button type="submit" class="btn btn-success">
                     <i class="fa fa-save" aria-hidden="true"></i>
                     &nbsp;
                     Guardar Información

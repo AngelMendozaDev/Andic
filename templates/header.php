@@ -110,7 +110,7 @@ if (isset($_SESSION['ID'])) {
                         <div class="accordion-body">
                             <ul class="sub-menu">
                                 <li class="sub-option">
-                                    <a href="">
+                                    <a href="users.php">
                                         <i class="fas fa-user-tie"></i>
                                         Personal
                                     </a>
