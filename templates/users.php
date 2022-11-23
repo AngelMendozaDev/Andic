@@ -1,4 +1,9 @@
-<?php require_once "header.php"; ?>
+<?php 
+require_once "header.php";
+require_once "../models/Comunity.php";
+$model = new Comunity();
+$request = $model->getUsers();
+?>
 <link rel="stylesheet" href="../resources/css/users.css">
 
 <div class="container mt-5 mb-3">
@@ -17,26 +22,26 @@
         </div>
     </div>
     <div class="row h-100 mt-3 mb-5" id="newUser">
-        <form action="" method="POST" class="form-users">
+        <form onsubmit="return sendInfo()" method="POST" class="form-users">
             <div class="input-group mb-3" style="width: 200px;">
                 <span class="input-group-text">
                     Folio:
                 </span>
-                <input type="text" class="form-control" id="folio" readonly>
+                <input type="text" class="form-control" style="font-weight: 700;" id="folio" readonly>
             </div>
 
             <div class="flex-cont mb-3">
                 <div class="input-group">
                     <span class="input-group-text">Nombre:</span>
-                    <input type="text" name="" id="" class="form-control" required>
+                    <input type="text" name="nombre" id="nombre" class="form-control" maxlength="30" required>
                 </div>
                 <div class="input-group">
                     <span class="input-group-text">Paterno:</span>
-                    <input type="text" name="" id="" class="form-control" required>
+                    <input type="text" name="app" id="app" class="form-control" maxlength="25" required>
                 </div>
                 <div class="input-group">
                     <span class="input-group-text">Materno:</span>
-                    <input type="text" name="" id="" class="form-control" required>
+                    <input type="text" name="apm" id="apm" class="form-control" maxlength="25" required>
                 </div>
             </div>
 
@@ -48,7 +53,7 @@
 
                 <div class="input-group">
                     <label class="input-group-text">Sexo:</label>
-                    <select name="sexo" id="sexo" class="form-select">
+                    <select name="sexo" id="sexo" class="form-select" required>
                         <option value="" selected="true" disabled>Selecciona tu Sexo</option>
                         <option value="H">Hombre</option>
                         <option value="M">Mujer</option>
@@ -63,55 +68,67 @@
                 </div>
                 <div class="input-group">
                     <span class="input-group-text">Telefono:</span>
-                    <input type="number" class="form-control" name="phone" id="phone" required>
+                    <input type="number" class="form-control" name="phone" id="phone" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                 </div>
             </div>
 
             <div class="flex-cont">
                 <div class="input-group">
                     <span class="input-group-text">Codigo Postal:</span>
-                    <input type="text" class="form-control">
+                    <input type="number" class="form-control" name="codePos" id="codePos" maxlength="6" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                 </div>
                 <div class="input-group">
                     <span class="input-group-text">Colonia:</span>
-                    <input type="text" class="form-control">
+                    <select name="col" id="col" class="form-select" required>
+                        <option value="" selected="true" disabled>Selecciona una Colonia</option>
+                    </select>
                 </div>
             </div>
 
             <div class="flex-cont">
                 <div class="input-group">
                     <span class="input-group-text">Municipio:</span>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" id="mun" readonly>
                 </div>
                 <div class="input-group">
                     <span class="input-group-text">Estado:</span>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" id="edo" readonly>
                 </div>
             </div>
+
+        <center>
+            <button class="btn btn-success" type="submit">
+                <i class="fas fa-save    "></i>
+                Guardar Información
+            </button>
+        </center>
 
         </form>
     </div>
 
     <div class="row mb-5 mt-3" id="TableUser">
-        <table class="table table-striped table-inverse table-responsive">
+        <table class="table table-striped table-bordered table-hover table-responsive">
             <thead class="thead-inverse">
-                <tr>
-                    <th>Some Title</th>
-                    <th>Some Title</th>
-                    <th>Some Title</th>
+                <tr class="text-center">
+                    <th>Folio</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Mail</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td scope="row">Some Text</td>
-                    <td>Some Text</td>
-                    <td>Some Text</td>
+                <?php echo ?>
+                <tr class="text-center">
+                    <td scope="row"><?php echo $item['']; ?></td>
+                    <td><?php echo $item['']; ?></td>
+                    <td><?php echo $item['']; ?></td>
+                    <td><?php echo $item['']; ?></td>
+                    <td><?php echo $item['']; ?></td>
+                    <td><?php echo $item['']; ?></td>
                 </tr>
-                <tr>
-                    <td scope="row">Some Text</td>
-                    <td>Some Text</td>
-                    <td>Some Text</td>
-                </tr>
+                <?php echo ?>
             </tbody>
         </table>
     </div>

@@ -17,6 +17,10 @@ class General
             return $this->conn;
     }
 
+    public function getConexion(){
+        return $this->conn;
+    }
+
     public function login($user, $pass)
     {
         if ($this->conn != false) {

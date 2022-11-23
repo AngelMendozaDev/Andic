@@ -60,3 +60,8 @@
     color: rgb(28, 84, 204);
     border-bottom: 5px solid rgba(28,84,204,0.5);
 }
+
+.error{
+    border: 2px dotted #ff0000;
+    color: #ff0000;
+}
