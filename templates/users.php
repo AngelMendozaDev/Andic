@@ -1,10 +1,11 @@
-<?php 
+<?php
 require_once "header.php";
 require_once "../models/Comunity.php";
 $model = new Comunity();
 $request = $model->getUsers();
 ?>
 <link rel="stylesheet" href="../resources/css/users.css">
+<link rel="stylesheet" href="../resources/libs/datatable/css/dataTables.bootstrap5.min.css">
 
 <div class="container mt-5 mb-3">
     <div class="row">
@@ -22,7 +23,8 @@ $request = $model->getUsers();
         </div>
     </div>
     <div class="row h-100 mt-3 mb-5" id="newUser">
-        <form onsubmit="return sendInfo()" method="POST" class="form-users">
+        <form onsubmit="return sendInfo()" method="POST" class="form-users" id="form-users">
+            <input type="text" value="newUser" id="Action" name="Action" hidden>
             <div class="input-group mb-3" style="width: 200px;">
                 <span class="input-group-text">
                     Folio:
@@ -96,18 +98,18 @@ $request = $model->getUsers();
                 </div>
             </div>
 
-        <center>
-            <button class="btn btn-success" type="submit">
-                <i class="fas fa-save    "></i>
-                Guardar Información
-            </button>
-        </center>
+            <center>
+                <button class="btn btn-success" type="submit">
+                    <i class="fas fa-save    "></i>
+                    Guardar Información
+                </button>
+            </center>
 
         </form>
     </div>
 
-    <div class="row mb-5 mt-3" id="TableUser">
-        <table class="table table-striped table-bordered table-hover table-responsive">
+    <div class="row mb-5 mt-3 w-100" id="TableUser" class="tableBox">
+        <table class="table table-striped table-bordered table-hover table-responsive" id="table-Us">
             <thead class="thead-inverse">
                 <tr class="text-center">
                     <th>Folio</th>
@@ -119,20 +121,33 @@ $request = $model->getUsers();
                 </tr>
             </thead>
             <tbody>
-                <?php echo ?>
-                <tr class="text-center">
-                    <td scope="row"><?php echo $item['']; ?></td>
-                    <td><?php echo $item['']; ?></td>
-                    <td><?php echo $item['']; ?></td>
-                    <td><?php echo $item['']; ?></td>
-                    <td><?php echo $item['']; ?></td>
-                    <td><?php echo $item['']; ?></td>
-                </tr>
-                <?php echo ?>
+                <?php while ($item = $request->fetch_assoc()) { ?>
+                    <tr class="text-center">
+                        <td scope="row"><?php echo $item['id_p']; ?></td>
+                        <td><?php echo $item['nombre']; ?></td>
+                        <td><?php echo $item['app']; ?></td>
+                        <td><?php echo $item['apm']; ?></td>
+                        <td><?php echo $item['correo']; ?></td>
+                        <td>
+                            <button class="btn btn-primary btn-small" onclick="viewUser(`<?php echo $item['id_p'];?>`)">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn btn-success btn-small">
+                                <i class="fa fa-unlock" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>
 </div>
 
 <?php require_once "footer.php"; ?>
+<script src="../resources/libs/datatable/js/jquery.dataTables.min.js"></script>
+<script src="../resources/libs/datatable/js/dataTables.bootstrap5.min.js"></script>
+<script src="../resources/libs/datatable/js/dataTables.buttons.min.js"></script>
+<script>
+    viewFlag = "<?php if(isset($_GET['view'])) echo $_GET['view']; else echo 'N'; ?>";
+</script>
 <script src="../resources/js/users.js"></script>

@@ -134,6 +134,7 @@
     height: calc(100vh - 80px);
     margin-left: -350px;
     transition: all 0.5s;
+    z-index: 2;
 }
 
 .menu-head .img-box{
@@ -238,4 +239,13 @@ footer{
     margin: auto;
     text-align: center;
     width: 100%;
+}
+
+@media(max-width: 700px){
+    .icon-box{
+        width: 40%;
+    }
+    .option-box{
+        width: 60%;
+    }
 }

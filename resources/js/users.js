@@ -1,12 +1,28 @@
-function vistas(flag) {
+
+function getFolio() {
+    $.ajax({
+        url: '../controllers/users.php',
+        type: 'POST',
+        data: { Action: "getFolio" },
+        success: function (response) {
+            response = "" + (parseInt(response) + 1);
+            $('#folio').val(response.padStart(5, 0));
+        }
+    });
+}
+
+function vistas(viewFlag) {
     $('#register').removeClass('active');
     $('#tableU').removeClass('active');
-    if (flag == 'N') {
+    if (viewFlag == 'N') {
+        getFolio();
+        $('#Action').val("newUser");
+        $('#form-users')[0].reset();
         $('#TableUser').hide(10);
         $('#newUser').show("slow");
         $('#register').addClass('active');
     }
-    else if (flag == 'T') {
+    else if (viewFlag == 'T') {
         $('#newUser').hide(10);
         $('#TableUser').show("slow");
         $('#tableU').addClass('active');
@@ -18,30 +34,55 @@ function sendInfo() {
     fecha = $('#nac').val().split("-");
     $('#nac').removeClass("error");
     $('#phone').removeClass("error");
-    if ((now.getFullYear() - fecha[0]) < 18) {
+    if ((now.getFullYear() - fecha[0]) > 18) {
+        if ($('#phone').val().length < 10)
+            $('#phone').addClass("error");
+        else {
+            $.ajax({
+                url: "../controllers/users.php",
+                type: 'POST',
+                data: $('#form-users').serialize(),
+                success: function (response) {
+                    //console.log(response);
+                    if (response.trim() == 1) {
+                        swal("Registro exitoso!!", "ANDIC A.C. 2022", "success").then((value) => {
+                            location.href = "users.php?view=T"
+                        });
+                    }
+                    else if (response.trim() == '2') {
+                        swal("El correo o telefono ya han sido registrados, verifica la información proporcionada", "ANDIC A.C. 2022", "info");
+                    }
+                    else {
+                        swal("Ooops!  Ocurrio un error inesperado, intente de muevo", "ANDIC A.C. 2022", "error");
+                    }
+                }
+            });
+        }
+    }
+    else
         $('#nac').addClass("error");
-    }
-    
-    if($('#phone').val().length < 10)
-        $('#phone').addClass("error");
-    else {
-    }
 
     return false;
 }
 
-$(function () {
+function viewUser(person) {
+    $('#Action').val("updateUser");
+    $('#form-users')[0].reset();
     $('#TableUser').hide(10);
-    $('#register').addClass('active');
-
+    $('#newUser').show("slow");
     $.ajax({
         url: '../controllers/users.php',
         type: 'POST',
-        data: { Action: "getFolio"},
+        data: { Action: 'getUser', person },
         success: function (response) {
-            $('#folio').val(response.padStart(5,0))
+            console.log(response);
         }
     });
+}
+
+$(function () {
+    $('#table-Us').DataTable();
+    vistas(viewFlag)
 
     $('#codePos').keyup(function () {
         value = $('#codePos').val();
