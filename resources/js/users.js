@@ -76,6 +76,19 @@ function viewUser(person) {
         data: { Action: 'getUser', person },
         success: function (response) {
             console.log(response);
+            data = JSON.parse(response);
+            $('#lienzo').append("<div class='input-group mb-3'>" +
+                "<span class='input-group-text'>Calle:</span>" +
+                "<input type='text' class='form-control' name='calle' id='calle' maxlength='10' oninput='if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' required>" +
+                "</div>");
+            $('#nombre').val(data.nombre);
+            $('#app').val(data.app);
+            $('#apm').val(data.apm);
+            $('#nac').val(data.fecha_nac);
+            $('#sexo').val(data.sexo);
+            $('#mail').val(data.correo);
+            $('#phone').val(data.tel);
+
         }
     });
 }

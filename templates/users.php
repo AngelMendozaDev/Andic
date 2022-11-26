@@ -73,7 +73,9 @@ $request = $model->getUsers();
                     <input type="number" class="form-control" name="phone" id="phone" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                 </div>
             </div>
-
+            <div id="lienzo">
+                
+            </div>
             <div class="flex-cont">
                 <div class="input-group">
                     <span class="input-group-text">Codigo Postal:</span>

@@ -83,7 +83,7 @@ class Comunity extends General
 
     public function getUser($person){
         $conec = General::getConexion();
-        $query = $conec->prepare("SELECT * FROM persona WHERE id_p = ?");
+        $query = $conec->prepare("SELECT p.*, d.calle, d.cp FROM persona AS p INNER JOIN domicilio AS d ON d.id_dom = p.id_p WHERE p.id_p = ?");
         $query->bind_param('s',$person);
         $query->execute();
         $res = $query->get_result();
