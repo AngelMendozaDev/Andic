@@ -69,7 +69,7 @@ $request = $model->getComunity();
                     <input type="mail" class="form-control" name="mail" id="mail" required>
                 </div>
                 <div class="input-group">
-                    <span class="input-group-text">Telefono:</span>
+                    <span class="input-group-text">Teléfono:</span>
                     <input type="number" class="form-control" name="phone" id="phone" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                 </div>
             </div>
@@ -79,7 +79,7 @@ $request = $model->getComunity();
             </div>
             <div class="flex-cont">
                 <div class="input-group">
-                    <span class="input-group-text">Codigo Postal:</span>
+                    <span class="input-group-text">Código Postal:</span>
                     <input type="number" class="form-control" name="codePos" id="codePos" maxlength="6" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                 </div>
                 <div class="input-group">
@@ -104,6 +104,7 @@ $request = $model->getComunity();
             <center>
                 <button class="btn btn-success" id="btn-form" type="submit">
                     <i class="fas fa-save"></i>
+                    &nbsp;
                     Guardar Información
                 </button>
             </center>
