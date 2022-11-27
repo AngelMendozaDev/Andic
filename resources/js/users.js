@@ -11,6 +11,30 @@ function getFolio() {
     });
 }
 
+function getCP(cp) {
+    $.ajax({
+        url: '../controllers/users.php',
+        type: 'POST',
+        data: { Action: "getCol", cp },
+        success: function (response) {
+            $('#col').empty()
+            $('#col').append("<option value='' selected='true' disabled>Selecciona una Colonia</option>");
+            if (response.trim() == -1) {
+                $('#codePos').addClass("error")
+            }
+            else {
+                $('#codePos').removeClass("error")
+                data = JSON.parse(response);
+                $.each(data, function (key, item) {
+                    $('#col').append("<option value='" + item.folio + "'>" + item.col + "</option>")
+                });
+                $('#mun').val(data[0].mun);
+                $('#edo').val(data[0].edo);
+            }
+        }
+    });
+}
+
 function vistas(viewFlag) {
     $('#register').removeClass('active');
     $('#tableU').removeClass('active');
@@ -77,10 +101,8 @@ function viewUser(person) {
         success: function (response) {
             console.log(response);
             data = JSON.parse(response);
-            $('#lienzo').append("<div class='input-group mb-3'>" +
-                "<span class='input-group-text'>Calle:</span>" +
-                "<input type='text' class='form-control' name='calle' id='calle' maxlength='10' oninput='if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' required>" +
-                "</div>");
+            getCP(data.cp);
+            $('#folio').val(data.id_p);
             $('#nombre').val(data.nombre);
             $('#app').val(data.app);
             $('#apm').val(data.apm);
@@ -88,7 +110,11 @@ function viewUser(person) {
             $('#sexo').val(data.sexo);
             $('#mail').val(data.correo);
             $('#phone').val(data.tel);
-
+            $('#calle').val(data.calle);
+            $('#codePos').val(data.cp);
+            $('#col').empty();
+            $("#col").append("<option value='"+data.folCP+"' selected='true'>"+data.col+"</option>")
+            $("#col").val(data.folCP);
         }
     });
 }
@@ -99,27 +125,7 @@ $(function () {
 
     $('#codePos').keyup(function () {
         value = $('#codePos').val();
-        $.ajax({
-            url: '../controllers/users.php',
-            type: 'POST',
-            data: { Action: "getCol", cp: value },
-            success: function (response) {
-                $('#col').empty()
-                $('#col').append("<option value='' selected='true' disabled>Selecciona una Colonia</option>");
-                if (response.trim() == -1) {
-                    $('#codePos').addClass("error")
-                }
-                else {
-                    $('#codePos').removeClass("error")
-                    data = JSON.parse(response);
-                    $.each(data, function (key, item) {
-                        $('#col').append("<option value='" + item.folio + "'>" + item.col + "</option>")
-                    });
-                    $('#mun').val(data[0].mun);
-                    $('#edo').val(data[0].edo);
-                }
-            }
-        });
+        getCP(value);
     });
 
 });

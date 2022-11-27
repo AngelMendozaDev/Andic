@@ -54,8 +54,8 @@ class Comunity extends General
     {
         if (self::userExist($object['mail'], $object['phone']) == false) {
             $conec = General::getConexion();
-            $query = $conec->prepare('CALL newUser(?,?,?,?,?,?,?,?)');
-            $query->bind_param('ssssssss', $object['nombre'], $object['app'], $object['apm'], $object['sexo'], $object['nacimiento'], $object['mail'], $object['phone'], $object['col']);
+            $query = $conec->prepare('CALL newUser(?,?,?,?,?,?,?,?,?)');
+            $query->bind_param('sssssssss', $object['nombre'], $object['app'], $object['apm'], $object['sexo'], $object['nacimiento'], $object['mail'], $object['phone'],$object['street'], $object['col']);
             $res = $query->execute();
 
             $query->close();
@@ -83,7 +83,7 @@ class Comunity extends General
 
     public function getUser($person){
         $conec = General::getConexion();
-        $query = $conec->prepare("SELECT p.*, d.calle, d.cp FROM persona AS p INNER JOIN domicilio AS d ON d.id_dom = p.id_p WHERE p.id_p = ?");
+        $query = $conec->prepare("SELECT p.*, d.calle, d.cp AS folCP, c.cp, c.col FROM persona AS p INNER JOIN domicilio AS d ON d.id_dom = p.id_p INNER JOIN cp_col AS c ON c.n_registro = d.cp WHERE p.id_p = ?");
         $query->bind_param('s',$person);
         $query->execute();
         $res = $query->get_result();

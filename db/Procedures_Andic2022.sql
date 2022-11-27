@@ -9,6 +9,7 @@ DELIMITER $$
         in date_p date,
         in mail varchar(60),
         in phone varchar(10),
+        in street varchar(60),
         in codep int
     )
     begin
@@ -16,7 +17,7 @@ DELIMITER $$
 		INSERT INTO persona (nombre,app,apm,sexo,fecha_nac,correo,tel,estado) VALUES (name_p, app_p, apm_p, sex, date_p, mail, phone,1);
 		SET lastID = LAST_INSERT_ID();
         IF lastID > 0 then
-			INSERT INTO domicilio(id_dom, calle, cp) VALUES (lastID, "SIN CALLE", codep);
+			INSERT INTO domicilio(id_dom, calle, cp) VALUES (lastID, street, codep);
 			INSERT INTO angeles(id_angel,pass,picture,perfil) VALUES (lastID,"AndicAC123",'noImg.png',1);
 			commit;
 		else

@@ -73,8 +73,9 @@ $request = $model->getUsers();
                     <input type="number" class="form-control" name="phone" id="phone" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                 </div>
             </div>
-            <div id="lienzo">
-                
+            <div class="input-group mb-3">
+                <span class="input-group-text">Calle y Numero:</span>
+                <input type="text" class="form-control" name="street" id="calle" maxlength="60" style="text-transform: uppercase;" required>
             </div>
             <div class="flex-cont">
                 <div class="input-group">
@@ -131,7 +132,7 @@ $request = $model->getUsers();
                         <td><?php echo $item['apm']; ?></td>
                         <td><?php echo $item['correo']; ?></td>
                         <td>
-                            <button class="btn btn-primary btn-small" onclick="viewUser(`<?php echo $item['id_p'];?>`)">
+                            <button class="btn btn-primary btn-small" onclick="viewUser(`<?php echo $item['id_p']; ?>`)">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </button>
                             <button class="btn btn-success btn-small">
@@ -150,6 +151,7 @@ $request = $model->getUsers();
 <script src="../resources/libs/datatable/js/dataTables.bootstrap5.min.js"></script>
 <script src="../resources/libs/datatable/js/dataTables.buttons.min.js"></script>
 <script>
-    viewFlag = "<?php if(isset($_GET['view'])) echo $_GET['view']; else echo 'N'; ?>";
+    viewFlag = "<?php if (isset($_GET['view'])) echo $_GET['view'];
+                else echo 'N'; ?>";
 </script>
 <script src="../resources/js/users.js"></script>
