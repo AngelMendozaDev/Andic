@@ -14,7 +14,7 @@
         <div class="cont-g" style="font-size: 25px; text-align: center;">
             Sistema integral para ANDIC A.C. <br>
             Puesto a Disposición por el estudio de desarrollo <br>
-            <a href="https://lumega-mx.com" class="btn btn-primary">
+            <a href="https://lumega-mx.com" class="btn btn-primary" target="_blank">
                 .:LUMEGA-MX:.
             </a>
         </div>

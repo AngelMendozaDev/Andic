@@ -20,8 +20,16 @@
             echo $model->getUser($_POST['person']);
         break;
         
-        case 'resetPass':
-            echo "Reset Password";
+        case 'newPerson':
+            echo $model->newPerson($_POST);
+        break;
+
+        case 'updateUser':
+            echo $model->updateUser($_POST);
+        break;
+
+        case 'userOff':
+            echo $model->userOff($_POST['user']);
         break;
     }
 ?>

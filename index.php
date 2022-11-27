@@ -31,7 +31,7 @@
                     <span class="input-group-text">
                         <i class="fa fa-lock" aria-hidden="true"></i>
                     </span>
-                    <input type="text" maxlength="20" class="form-control" placeholder="password" id="pass" name="pass" required>
+                    <input type="password" maxlength="20" class="form-control" placeholder="password" id="pass" name="pass" required>
                 </div>
 
                 <center>

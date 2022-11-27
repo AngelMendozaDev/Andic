@@ -63,7 +63,7 @@ if (isset($_SESSION['ID'])) {
                     </li>
                     <hr class="separador">
                     <li class="text-center">
-                        <a href="" class="sub-opt">
+                        <a href="../controllers/close.php" class="sub-opt">
                             <button class="btn btn-danger">
                                 <i class="fa fa-sign-out" aria-hidden="true"></i>
                                 Cerrar Sesión
@@ -116,13 +116,15 @@ if (isset($_SESSION['ID'])) {
                                     </a>
                                 </li>
                                 <li class="sub-option">
-                                    <a href="">
-                                        Option2
+                                    <a href="comunity.php">
+                                        <i class="fa fa-users" aria-hidden="true"></i>
+                                        Comunidad
                                     </a>
                                 </li>
                                 <li class="sub-option">
-                                    <a href="">
-                                        Option3
+                                    <a href="services.php">
+                                        <i class="fa fa-people-arrows" aria-hidden="true"></i>
+                                        Servicio Social / Residencias
                                     </a>
                                 </li>
                             </ul>
@@ -132,12 +134,30 @@ if (isset($_SESSION['ID'])) {
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Accordion Item #2
+                            <i class="fa fa-school" aria-hidden="true"></i>
+                            Instituciones Convenios
                         </button>
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#OptionsAccordion">
                         <div class="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <ul class="sub-menu">
+                                <li class="sub-option">
+                                    <a href="institucion.php">
+                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                        Nuevo Convenio
+                                    </a>
+                                </li>
+                                <li class="sub-option">
+                                    <a href="">
+                                        optionX
+                                    </a>
+                                </li>
+                                <li class="sub-option">
+                                    <a href="">
+                                        optionX
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>

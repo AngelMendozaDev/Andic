@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 require_once "General.php";
 
 class Comunity extends General
@@ -42,7 +43,7 @@ class Comunity extends General
     public function getUsers()
     {
         $conec = General::getConexion();
-        $query = $conec->prepare("SELECT p.id_p, p.nombre, p.app, p.apm, p.correo, a.perfil FROM persona AS p INNER JOIN angeles AS a ON a.id_angel = p.id_p ORDER BY p.id_p ASC");
+        $query = $conec->prepare("SELECT p.* FROM persona AS p INNER JOIN angeles AS a ON a.id_angel = p.id_p WHERE p.estado = 1 AND a.perfil = 1 ORDER BY p.id_p DESC");
         $query->execute();
         $request = $query->get_result();
         $query->close();
@@ -50,19 +51,44 @@ class Comunity extends General
         return $request;
     }
 
-    public function newUser($object)
+    public function getComunity()
+    {
+        $conec = General::getConexion();
+        $query = $conec->prepare("SELECT p.* FROM persona AS p INNER JOIN angeles AS a ON a.id_angel = p.id_p WHERE p.estado = 1 AND a.perfil = 2 ORDER BY p.id_p DESC");
+        $query->execute();
+        $request = $query->get_result();
+        $query->close();
+
+        return $request;
+    }
+
+    public function newPerson($object)
     {
         if (self::userExist($object['mail'], $object['phone']) == false) {
             $conec = General::getConexion();
-            $query = $conec->prepare('CALL newUser(?,?,?,?,?,?,?,?,?)');
-            $query->bind_param('sssssssss', $object['nombre'], $object['app'], $object['apm'], $object['sexo'], $object['nacimiento'], $object['mail'], $object['phone'],$object['street'], $object['col']);
+            $query = $conec->prepare('CALL newPerson(?,?,?,?,?,?,?,?,?)');
+            $query->bind_param('sssssssss', strtoupper($object['nombre']), strtoupper($object['app']), strtoupper($object['apm']), $object['sexo'], $object['nacimiento'], $object['mail'], $object['phone'], strtoupper($object['street']), $object['col']);
             $res = $query->execute();
 
             $query->close();
 
             return $res;
-        }
-        else
+        } else
+            return "2";
+    }
+
+    public function newUser($object)
+    {
+        if (self::userExist($object['mail'], $object['phone']) == false) {
+            $conec = General::getConexion();
+            $query = $conec->prepare('CALL newUser(?,?,?,?,?,?,?,?,?)');
+            $query->bind_param('sssssssss', strtoupper($object['nombre']), strtoupper($object['app']), strtoupper($object['apm']), $object['sexo'], $object['nacimiento'], $object['mail'], $object['phone'], strtoupper($object['street']), $object['col']);
+            $res = $query->execute();
+
+            $query->close();
+
+            return $res;
+        } else
             return "2";
     }
 
@@ -81,14 +107,53 @@ class Comunity extends General
         return false;
     }
 
-    public function getUser($person){
+    public function getUser($person)
+    {
         $conec = General::getConexion();
         $query = $conec->prepare("SELECT p.*, d.calle, d.cp AS folCP, c.cp, c.col FROM persona AS p INNER JOIN domicilio AS d ON d.id_dom = p.id_p INNER JOIN cp_col AS c ON c.n_registro = d.cp WHERE p.id_p = ?");
-        $query->bind_param('s',$person);
+        $query->bind_param('s', $person);
         $query->execute();
         $res = $query->get_result();
         $query->close();
 
         return json_encode($res->fetch_assoc());
+    }
+
+    public function updateUser($object)
+    {
+        $conec = General::getConexion();
+        $query = $conec->prepare('CALL updatePerson(?,?,?,?,?,?,?,?,?,?)');
+        $query->bind_param('ssssssssss', strtoupper($object['nombre']), strtoupper($object['app']), strtoupper($object['apm']), $object['sexo'], $object['nacimiento'], $object['mail'], $object['phone'], strtoupper($object['street']), $object['col'], $object['user']);
+        $res = $query->execute();
+
+        $query->close();
+
+        return $res;
+    }
+
+    public function userOff($user)
+    {
+        $conec = General::getConexion();
+        $query = $conec->prepare('UPDATE persona SET estado = 0 WHERE id_p = ?');
+        $query->bind_param('s', $user);
+        $res = $query->execute();
+
+        $query->close();
+
+        return $res;
+
+    }
+
+    public function userOn($user)
+    {
+        $conec = General::getConexion();
+        $query = $conec->prepare('UPDATE persona SET estado = 1 WHERE id_p = ?');
+        $query->bind_param('s', $user);
+        $res = $query->execute();
+
+        $query->close();
+
+        return $res;
+
     }
 }

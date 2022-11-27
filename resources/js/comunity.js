@@ -64,7 +64,7 @@ function vistas(viewFlag) {
     $('#tableU').removeClass('active');
     if (viewFlag == 'N') {
         getFolio();
-        $('#Action').val("newUser");
+        $('#Action').val("newPerson");
         $('#form-users')[0].reset();
         $('#TableUser').hide(10);
         $('#newUser').show("slow");
@@ -98,7 +98,7 @@ function sendInfo() {
                     console.log(response);
                     if (response.trim() == 1) {
                         swal("Registro exitoso!!", "ANDIC A.C. 2022", "success").then((value) => {
-                            location.href = "users.php?view=T"
+                            location.href = "comunity.php?view=T"
                         });
                     }
                     else if (response.trim() == '2') {
@@ -167,7 +167,7 @@ function deleteUser(user){
                 console.log(response);
                 if(response.trim() == 1){
                     swal("Eliminación exitosa!!","Andic 2022", "success").then((value)=>{
-                        location.href = "users.php?view=T";
+                        location.href = "comunity.php?view=T";
                     });
                 }
                 else{

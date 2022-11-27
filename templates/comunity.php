@@ -2,7 +2,7 @@
 require_once "header.php";
 require_once "../models/Comunity.php";
 $model = new Comunity();
-$request = $model->getUsers();
+$request = $model->getComunity();
 ?>
 <link rel="stylesheet" href="../resources/css/users.css">
 <link rel="stylesheet" href="../resources/libs/datatable/css/dataTables.bootstrap5.min.css">
@@ -11,12 +11,12 @@ $request = $model->getUsers();
     <div class="row">
         <div class="MenuLabel">
             <btn onclick="vistas('N')" class="textLabel" id="register">
-                Registro de Usuarios
+                Registro de Comunidad
                 &nbsp;
                 <i class="fa fa-user-plus" aria-hidden="true"></i>
             </btn>
             <label onclick="vistas('T')" class="textLabel" id="tableU">
-                Consulta de Usuarios
+                Consulta de Asociados
                 &nbsp;
                 <i class="fas fa-table    "></i>
             </label>
@@ -154,4 +154,4 @@ $request = $model->getUsers();
     viewFlag = "<?php if (isset($_GET['view'])) echo $_GET['view'];
                 else echo 'N'; ?>";
 </script>
-<script src="../resources/js/users.js"></script>
+<script src="../resources/js/comunity.js"></script>
