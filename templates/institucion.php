@@ -20,7 +20,8 @@
         </div>
     </div>
     <div class="row mb-3" id="newInst">
-        <form onsubmit="return false" method="POST" id="form-institucion">
+        <form onsubmit="return sendInfo()" method="POST" id="form-institucion">
+            <input type="text" value="newInst" name="action" id="action" hidden>
             <div class="input-group mb-3 w-25">
                 <span class="input-group-text">(CCT):</span>
                 <input type="text" class="form-control" maxlength="18" style="text-transform: uppercase;" name="cct" id="cct" placeholder="Clave del Centro de Trabajo" required>
@@ -51,18 +52,23 @@
             <div class="input-flex mb-3">
                 <div class="input-group">
                     <span class="input-group-text">Teléfono:</span>
-                    <input type="text" class="form-control" maxlength="10" name="phone" id="phone" required>
+                    <input type="number" class="form-control" name="phone" id="phone" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                 </div>
                 <div class="input-group">
                     <span class="input-group-text">Sector de la empresa:</span>
                     <select class="form-select" name="tipoIns" id="tipoIns" required>
                         <option value="" selected disabled>Selecciona una opción</option>
+                        <option value="1">Educación Pública</option>
+                        <option value="2">Educaciión Privada</option>
+                        <option value="3">PyMES</option>
+                        <option value="4">Emprendimiento</option>
+                        <option value="5">Salud/Bienestar</option>
                     </select>
                 </div>
             </div>
 
             <div class="form-floating mb-3">
-                <textarea class="form-control" placeholder="Direccion" id="direccion"></textarea>
+                <textarea class="form-control" placeholder="Direccion" id="direccion" name="direccion" style="text-transform: uppercase;" rows="5"  minlength="10" maxlength="100" required></textarea>
                 <label for="direccion">Dirección:</label>
             </div>
 

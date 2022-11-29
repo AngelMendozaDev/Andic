@@ -85,10 +85,11 @@ create table institucion(
 	clave varchar(18) unique not null,
     nombre_ins varchar(70) not null,
     tipo_ins int not null,
-    repre varchar(30) not null,
-    sub varchar(30) default null,
+    repre varchar(40) not null,
+    sub varchar(40) default null,
     phone varchar(10) not null,
     direc mediumtext not null,
+    estado int not null,
     primary key(clave)
 );
 

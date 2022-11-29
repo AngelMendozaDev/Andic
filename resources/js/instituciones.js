@@ -26,6 +26,18 @@ function vistas(viewFlag) {
     }
 }
 
+function sendInfo(){
+    $.ajax({
+        url:'../controllers/institud.php',
+        type:'POST',
+        data: $('#form-institucion').serialize(),
+        success:function(response){
+            console.log(response);
+        }
+    });
+    return false;
+}
+
 $(function(){
     vistas(viewFlag);
 });

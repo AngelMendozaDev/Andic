@@ -72,3 +72,18 @@ DELIMITER $$
         UPDATE domicilio SET calle = street, cp = codep WHERE id_dom = person;
     end
 $$
+
+DELIMITER $$
+	CREATE PROCEDURE newInst(
+		in clave_i varchar(18),
+        in name_i varchar(30),
+        in type_i int,
+        in jefe varchar(40),
+        in rep varchar(40),
+        in phone varchar(10),
+        in street mediumtext
+    )
+    begin
+		INSERT INTO institucion (clave, nombre_ins, tipo_ins, repre, sub, phone, direc) VALUES (clave_i, name_i, type_i, jefe, rep, phone, street);
+    end
+$$
