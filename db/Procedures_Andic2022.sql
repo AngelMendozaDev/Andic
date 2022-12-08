@@ -76,7 +76,7 @@ $$
 DELIMITER $$
 	CREATE PROCEDURE newInst(
 		in clave_i varchar(18),
-        in name_i varchar(30),
+        in name_i varchar(70),
         in type_i int,
         in jefe varchar(40),
         in rep varchar(40),
@@ -84,6 +84,22 @@ DELIMITER $$
         in street mediumtext
     )
     begin
-		INSERT INTO institucion (clave, nombre_ins, tipo_ins, repre, sub, phone, direc) VALUES (clave_i, name_i, type_i, jefe, rep, phone, street);
+		INSERT INTO institucion (clave, nombre_ins, tipo_ins, repre, sub, phone, direc,estado) VALUES (clave_i, name_i, type_i, jefe, rep, phone, street, 1);
+    end
+$$
+
+
+DELIMITER $$
+	CREATE PROCEDURE updateInst(
+		in clave_i varchar(18),
+        in name_i varchar(70),
+        in type_i int,
+        in jefe varchar(40),
+        in rep varchar(40),
+        in phone_u varchar(10),
+        in street mediumtext
+    )
+    begin
+		UPDATE institucion SET nombre_ins = name_i, tipo_ins =  type_i, repre = jefe, sub = rep, phone = phone_u, direc = street WHERE clave = clave_i;
     end
 $$

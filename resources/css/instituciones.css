@@ -44,3 +44,39 @@
     margin: auto;
     width: 49%;
 }
+
+table tr{
+    vertical-align: middle;
+}
+
+.name_box{
+    width: 280px;
+}
+
+.repre_box{
+    width: 200px;
+}
+
+.phone_box{
+    width: 100px;
+}
+
+.cct{
+    width:350px;
+}
+
+.table-box{
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.icons{
+    cursor: pointer;
+    text-shadow: 0px 2px 4px rgba(0,0,0);
+}
+
+@media(max-width: 800px){
+    #table-inst{
+        overflow-x: scroll;
+    }
+}

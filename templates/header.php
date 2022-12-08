@@ -121,12 +121,6 @@ if (isset($_SESSION['ID'])) {
                                         Comunidad
                                     </a>
                                 </li>
-                                <li class="sub-option">
-                                    <a href="services.php">
-                                        <i class="fa fa-people-arrows" aria-hidden="true"></i>
-                                        Servicio Social / Residencias
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -149,12 +143,14 @@ if (isset($_SESSION['ID'])) {
                                 </li>
                                 <li class="sub-option">
                                     <a href="">
-                                        optionX
+                                        <i class="fas fa-file-alt"></i>
+                                        Nueva solicitud
                                     </a>
                                 </li>
                                 <li class="sub-option">
-                                    <a href="">
-                                        optionX
+                                    <a href="services.php">
+                                        <i class="fa fa-people-arrows" aria-hidden="true"></i>
+                                        Servicio Social / Residencias
                                     </a>
                                 </li>
                             </ul>
