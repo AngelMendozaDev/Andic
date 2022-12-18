@@ -24,7 +24,7 @@ $request = $model->getComunity();
     </div>
     <div class="row h-100 mt-3 mb-5" id="newUser">
         <form onsubmit="return sendInfo()" method="POST" class="form-users" id="form-users">
-            <input type="text" value="newUser" id="Action" name="Action" hidden>
+            <input type="text" value="newPerson" id="Action" name="Action" hidden>
             <div class="input-group mb-3" style="width: 200px;">
                 <span class="input-group-text">
                     Folio:

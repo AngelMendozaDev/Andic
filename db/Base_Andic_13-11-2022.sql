@@ -102,16 +102,18 @@ create table servicios(
 );
 
 create table practicas(
-	id_practicas int auto_increment not null,
+	folio_p int auto_increment not null,
+    persona int not null,
     institucion int not null,
+    matricula varchar(30) not null,
     semestre int not null,
     tipo char(1) not null,
     estado int not null,
     inicio date default null,
     fin date default null,
     proy mediumtext default null,
-    primary key(id_practicas),
-    foreign key(id_practicas) references persona(id_p),
+    primary key(folio_p),
+    foreign key(persona) references persona(id_p),
     foreign key(institucion) references servicios(registro_c)
 );
 

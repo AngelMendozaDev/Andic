@@ -142,7 +142,7 @@ if (isset($_SESSION['ID'])) {
                                     </a>
                                 </li>
                                 <li class="sub-option">
-                                    <a href="">
+                                    <a href="registro.php">
                                         <i class="fas fa-file-alt"></i>
                                         Nueva solicitud
                                     </a>

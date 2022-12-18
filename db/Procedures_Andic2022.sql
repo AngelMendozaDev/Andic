@@ -103,3 +103,20 @@ DELIMITER $$
 		UPDATE institucion SET nombre_ins = name_i, tipo_ins =  type_i, repre = jefe, sub = rep, phone = phone_u, direc = street WHERE clave = clave_i;
     end
 $$
+
+
+DELIMITER $$
+	CREATE PROCEDURE newPractica(
+		in persona int,
+        in serv int,
+        in mat varchar(30),
+        in sem int,
+        in tipos char(1),
+        in startt date,
+        in finish date,
+        in proyecto mediumtext
+    )
+    begin
+		INSERT INTO practicas (persona, institucion, matricula, semestre, tipo, estado, inicio, fin, proy) VALUES (persona, serv, mat,sem,tipos,'1',startt,finish,proyecto);
+    end
+$$

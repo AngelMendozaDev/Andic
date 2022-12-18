@@ -1,0 +1,23 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.flex-input{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.flex-input .input-group{
+    width: 49%;
+    margin: auto;
+}
+
+.form-control{
+    text-transform: uppercase;
+}
+
+table tr{
+    vertical-align: middle;
+}
