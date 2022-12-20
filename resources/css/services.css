@@ -48,3 +48,14 @@
     margin-bottom: 10px;
     box-shadow: -10px 5px 5px rgba(0,0,0,0.3);
 }
+
+.name_inst{
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Modal de Vista */
+.input-flex{
+    display: flex;
+    margin: auto;
+}
