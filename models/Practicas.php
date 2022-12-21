@@ -130,4 +130,40 @@ class Practicas extends General
         return $request;
     }
 
+    public function getPractica($folio){
+        $conn = General::getConexion();
+        $query = $conn->prepare('SELECT p.nombre, p.app, p.apm, i.clave, i.nombre_ins, s.service, pr.* FROM practicas AS pr INNER JOIN persona AS p ON p.id_p = pr.persona INNER JOIN servicios AS s ON s.registro_c = pr.institucion INNER JOIN institucion AS i ON i.clave = s.inst WHERE pr.folio_p = ?');
+        $query->bind_param('s',$folio);
+        $query->execute();
+        $request = $query->get_result();
+
+        $query->close();
+
+        return json_encode($request->fetch_assoc());
+    }
+
+    public function getPracticaToPDF($folio){
+        $conn = General::getConexion();
+        $query = $conn->prepare('SELECT i.nombre_ins, i.repre, i.sub, s.service, p.nombre, p.app, p.apm, pr.folio_p, pr.matricula, pr.tipo, pr.inicio, pr.fin FROM practicas AS pr INNER JOIN servicios AS s ON s.registro_c = pr.institucion INNER JOIN institucion AS i ON i.clave = s.inst INNER JOIN persona AS p ON p.id_p = pr.persona WHERE pr.folio_p = ?');
+        $query->bind_param('s',$folio);
+        $query->execute();
+        $request = $query->get_result();
+
+        $query->close();
+
+        return json_encode($request->fetch_assoc());
+    }
+
+    public function changeStatus($folio, $estatus){
+        $conn = General::getConexion();
+
+        $query = $conn->prepare('UPDATE practicas SET estado = ? WHERE folio_p = ?');
+        $query->bind_param('ss',$estatus, $folio);
+        $response = $query->execute();
+
+        $query->close();
+
+        return $response;
+    }
+
 }

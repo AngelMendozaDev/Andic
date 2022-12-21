@@ -51,7 +51,7 @@
                         </tr>
                     </thead>
                     <tbody id="lienzoI">
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -59,14 +59,14 @@
     </div>
     <div class="row mt-3 mb-3" id="datos">
         <form onsubmit="return sendInfo()" method="POST" class="col-12" id="form-practicas">
-        <input type="text" name="action" id="rol" value="newRegistro">
+            <input type="text" name="action" id="rol" value="newRegistro" hidden>
             <div class="flex-input">
                 <div class="input-group">
                     <span class="input-group-text">
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </span>
                     <input type="text" class="form-control" id="name-user" readonly>
-                    <input type="text" id="user" name="user" hidden >
+                    <input type="text" id="user" name="user" hidden>
                 </div>
                 <div class="input-group w-50">
                     <span class="input-group-text">
@@ -95,7 +95,7 @@
                     <option value="R">Residencias Profecionales</option>
                 </select>
             </div>
-            
+
             <hr>
             <div class="flex-input">
                 <div class="input-group">
