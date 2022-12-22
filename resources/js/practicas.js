@@ -78,5 +78,5 @@ function changeStatus(folio, status){
 }
 
 $(function () {
-
+    $('#table').DataTable();
 });

@@ -160,13 +160,18 @@ if (isset($_SESSION['ID'])) {
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Accordion Item #3
+                            Control de Pagina web &nbsp; <i class="fa fa-globe" aria-hidden="true"></i>
                         </button>
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#OptionsAccordion">
-                        <div class="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
+                        <ul class="sub-menu">
+                            <li class="sub-option">
+                                <a href="history.php">
+                                    <i class="fa fa-newspaper" aria-hidden="true"></i>
+                                    Historias
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

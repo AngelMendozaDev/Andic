@@ -107,10 +107,10 @@ function PutLink($URL, $txt)
 }
 }
 
-$html = utf8_decode("Por medio de la presente me permito informarle que el (la) <b>C. $res->nombre $res->app $res->apm</b>, estudiante de la carrera de <b>$res->service</b>, con número de control <b>$res->matricula</b>, fue aceptado(a) para realizar <b>$tipo</b> en la  <b>Asociación Nacional para el Desarrollo Integral Comunitario A.C.,</b> cubriendo un total de <b>240 horas</b>, a partir del <b>$fechaI[2] DE $mesI DEL $fechaI[0], concluyendo su estadia el $fechaF[2] DE $mesF del $fechaF[0].</b>");
+$html = utf8_decode("Por medio de la presente me permito informarle que el (la) <b>C. $res->nombre $res->app $res->apm,</b> estudiante de la carrera de <b>$res->service,</b> con número de control <b>$res->matricula</b>, del <b>$res->nombre_ins</b>, realizo <b>$tipo</b> en el programa <b>\"Aplicando tus conocimientos realizando una propuesta\",</b>  durante el periodo comprendido del <b>$fechaI[2] DE $mesI DEL $fechaI[0], concluyendo su estadia el $fechaF[2] DE $mesF del $fechaF[0].</b>, cubriendo un total de <b>480 horas.</b>");
 
 $fpdf = new PDF();
-$fpdf->SetTitle("Carta Aceptacion-$nameDoc");
+$fpdf->SetTitle("Carta Termino-$nameDoc");
 $fpdf->AddPage('P', 'Letter', '0');
 $fpdf->SetFont('Arial', 'B', 11);
 $fpdf->Image('../resources/pictures/icons/Logo.png', 20, 5, 50, 35);
@@ -123,7 +123,7 @@ $fpdf->MultiCell(120, 8, "ASOCIACION NACIONAL PARA EL  DESARROLLO INTEGRAL \n CO
 $fpdf->Ln(10);
 
 $fpdf->SetFont('Arial', 'I', 10);
-$fpdf->MultiCell(180, 5, "CDMX a " . date('d') . " de $mes del " . date('Y') . "\n OFICIO No. VINC/$res->folio_p/2022", 0, 'R');
+$fpdf->MultiCell(180, 5, utf8_decode("CDMX a " . date('d') . " de $mes del " . date('Y') . "\nOFICIO No. VINC/$res->folio_p - 2/2022\nAsunto: Terminación de Servicio Social"), 0, 'R');
 
 $fpdf->Ln(10);
 
@@ -133,7 +133,7 @@ $fpdf->MultiCell(0, 5, "$res->repre \nDIRECTOR (A) DEL $instituto\nP R E S E N T
 $fpdf->Ln(10);
 
 $fpdf->SetFont('Arial', 'B', 11);
-$fpdf->MultiCell(0, 5, utf8_decode("AT´N: $res->sub \nJEFA (E) DEL DPTO.  DE VINCULACIÓN"), 0, 'R');
+$fpdf->MultiCell(0, 5, utf8_decode("AT´N: $res->sub\nJEFA (E) DEL DPTO.  DE VINCULACIÓN"), 0, 'R');
 
 $fpdf->Ln(20);
 
@@ -143,7 +143,7 @@ $fpdf->WriteHTML($html);
 
 $fpdf->Ln(10);
 
-$fpdf->Cell(0, 10, 'Agradezco las atenciones se sirva brindar al portador de la presente.', 0, 5, 'L');
+$fpdf->MultiCell(0, 5, utf8_decode("Se extiende la presente para los fines legales que al interesado convengan, en la Ciudad de México a los ". date('d')." días del mes de $mes del ".date('Y')."."), 0,'J');
 
 $fpdf->Ln(15);
 
@@ -158,10 +158,12 @@ $fpdf->SetFont('Arial', 'I', 7);
 $fpdf->Cell(70, 5, 'JFGM/gm', 0, 10, 'L');
 
 // Posición: a 1,5 cm del final
-$fpdf->SetY(-25);
+$fpdf->SetY(-30);
 // Arial italic 8
 $fpdf->SetFont('Arial', 'I', 8);
 // Número de página
-$fpdf->Cell(0, 4, utf8_decode('Santa Catarina Tláhuac,CDMX C.P. 13100 Cel. 5531149389'), 0, 0, 'C');
+$fpdf->MultiCell(0, 3, utf8_decode('Santa Catarina Tláhuac,CDMX C.P. 13100      
+www.andic.org.mx/
+Tel. 5531149389'), 0,'C');
 
 $fpdf->Output();

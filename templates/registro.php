@@ -102,7 +102,7 @@
                     <span class="input-group-text">
                         <i class="fa fa-id-card" aria-hidden="true"></i>
                     </span>
-                    <input type="text" class="form-control" name="matricula" required>
+                    <input type="text" class="form-control" name="matricula" maxlength="30" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" placeholder="MATRICULA/N° CONTROL " required>
                 </div>
                 <div class="input-group">
                     <span class="input-group-text">

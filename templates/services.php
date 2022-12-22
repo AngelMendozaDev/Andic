@@ -5,14 +5,23 @@ $model = new Practicas();
 $request = $model->getPracticas();
 $request2 = $model->getPracticas();
 $request3 = $model->getPracticas();
+$request4 = $model->getPracticasT();
 ?>
 <link rel="stylesheet" href="../resources/css/registro.css">
 <link rel="stylesheet" href="../resources/css/services.css">
+<link rel="stylesheet" href="../resources/libs/datatable/css/dataTables.bootstrap5.min.css">
 
-<div class="container">
+<div class="container mb-3">
     <div class="row text-center mb-2 mt-3">
         <h3>Servicio Social / Residencias</h3>
     </div>
+</div>
+
+<div class="cont-btn">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#table-modal">
+        Ver Concentrado &nbsp; <i class="fas fa-clock    "></i>
+    </button>
 </div>
 
 <div class="tablero mb-5">
@@ -77,10 +86,10 @@ $request3 = $model->getPracticas();
                                 <?php echo $item['proy']; ?>
                             </p>
                             <center>
-                                <button class="btn btn-primary btn-small" data-bs-toggle="modal" data-bs-target="#practiqueModal" onclick="getLetter('<?php echo $item['folio_p'] ?>')">
+                                <a class="btn btn-primary btn-small" href="../Letters/carta.php?ID=<?php echo $item['folio_p']; ?>" target="_blank">
                                     <i class="fa fa-file-alt" aria-hidden="true"></i>
-                                </button>
-                                <button class="btn btn-success btn-small" onclick="changeStatus(`<?php echo $item['folio_p'] ?>`, `2`)">
+                                </a>
+                                <button class="btn btn-success btn-small" onclick="changeStatus(`<?php echo $item['folio_p'] ?>`, `3`)">
                                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                                 </button>
                                 <button class="btn btn-danger btn-small" onclick="changeStatus(`<?php echo $item['folio_p'] ?>`, `1`)">
@@ -98,27 +107,37 @@ $request3 = $model->getPracticas();
             <h1>En Curso</h1>
         </div>
         <div class="body-col">
-            <div class="card">
-                <div class="card-header">
-                    PERSON NAME
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">[TYPE SERVICES]</h5>
-                    <h6>PROYECT TITLE</h6>
-                    <p class="card-text">Proyect- description - With supporting text below as a natural lead-in to additional content.</p>
-                    <center>
-                        <button class="btn btn-info btn-small">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                        </button>
-                        <button class="btn btn-success btn-small">
-                            <i class="fa fa-check-circle" aria-hidden="true"></i>
-                        </button>
-                        <button class="btn btn-danger btn-small">
-                            <i class="fa fa-times-circle" aria-hidden="true"></i>
-                        </button>
-                    </center>
-                </div>
-            </div>
+            <?php while ($item = $request3->fetch_assoc()) {
+                if ($item['estado'] == 3) { ?>
+                    <div class="card" id="card-<?php echo $item['folio_p'] ?>">
+                        <div class="card-header">
+                            <strong>
+                                <?php echo $item['nombre'] . ' ' . $item['app'] . ' ' . $item['apm']; ?>
+                            </strong>
+                        </div>
+                        <div class="card-body">
+                            <p class="name_inst"><?php echo strtoupper($item['nombre_ins']); ?></p>
+                            <h6 class="card-title">[<?php if ($item['tipo'] == 'S') echo 'SERVICIO SOCIAL';
+                                                    else echo 'RESIDENCIA PROFECIONAL' ?>]</h6>
+                            <p><?php echo $item['service']; ?></p>
+                            <p class="card-text">
+                                <?php echo $item['proy']; ?>
+                            </p>
+                            <center>
+                                <a class="btn btn-primary btn-small" href="../Letters/carta2.php?ID=<?php echo $item['folio_p']; ?>" target="_blank">
+                                    <i class="fa fa-file-alt" aria-hidden="true"></i>
+                                </a>
+                                <button class="btn btn-success btn-small" onclick="changeStatus(`<?php echo $item['folio_p'] ?>`, `4`)">
+                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                </button>
+                                <button class="btn btn-danger btn-small" onclick="changeStatus(`<?php echo $item['folio_p'] ?>`, `1`)">
+                                    <i class="fa fa-undo" aria-hidden="true"></i>
+                                </button>
+                            </center>
+                        </div>
+                    </div>
+            <?php }
+            } ?>
         </div>
     </div>
 </div>
@@ -248,5 +267,71 @@ $request3 = $model->getPracticas();
     </div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="table-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="table-modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="table-modalLabel">Historial de Servicios</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="table-container">
+                    <table class="table table-hover table-bordered table-responsive" id="table">
+                        <thead class="table-dark">
+                            <tr class="text-center">
+                                <th>Matricula</th>
+                                <th style="width: 200px;">Nombre</th>
+                                <th style="width: 200px;">Institucion</th>
+                                <th>Tipo</th>
+                                <th>Estado</th>
+                                <th>Inicio</th>
+                                <th>Final</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while($item = $request4->fetch_assoc()){
+                                switch($item['estado']){
+                                    case 1:
+                                        $estado = "Solicitud";
+                                    break;
+                                    case 2:
+                                        $estado = "Aceptado";
+                                    break;
+                                    case 3:
+                                        $estado = "Curso";
+                                    break;
+                                    case 4:
+                                        $estado = "Finalizado";
+                                    break;
+                                    case 5:
+                                        $estado = "Rechazado";
+                                    break;
+                                } ?>
+                            <tr class="text-center estado_<?php echo $item['estado'] ?>">
+                                <td><?php echo $item['matricula']; ?></td>
+                                <td><?php echo $item['nombre']." ".$item['app']." ".$item['apm']; ?></td>
+                                <td><?php echo $item['nombre_ins']; ?></td>
+                                <td><?php echo $item['tipo'] == 'S' ? "SERVICIO SOCIAL":"RESIDENCIAS PROFECIONALES"; ?></td>
+                                <td><?php echo $estado; ?></td>
+                                <td><?php echo $item['inicio']; ?></td>
+                                <td><?php echo $item['fin']; ?></td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php require_once "footer.php"; ?>
+<script src="../resources/libs/datatable/js/jquery.dataTables.min.js"></script>
+<script src="../resources/libs/datatable/js/dataTables.bootstrap5.min.js"></script>
 <script src="../resources/js/practicas.js"></script>

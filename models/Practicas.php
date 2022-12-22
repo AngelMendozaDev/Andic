@@ -130,6 +130,18 @@ class Practicas extends General
         return $request;
     }
 
+    public function getPracticasT(){
+        $conn = General::getConexion();
+
+        $query = $conn->prepare("SELECT * FROM getPracticasT");
+        $query->execute();
+        $request = $query->get_result();
+
+        $query->close();
+
+        return $request;
+    }
+
     public function getPractica($folio){
         $conn = General::getConexion();
         $query = $conn->prepare('SELECT p.nombre, p.app, p.apm, i.clave, i.nombre_ins, s.service, pr.* FROM practicas AS pr INNER JOIN persona AS p ON p.id_p = pr.persona INNER JOIN servicios AS s ON s.registro_c = pr.institucion INNER JOIN institucion AS i ON i.clave = s.inst WHERE pr.folio_p = ?');

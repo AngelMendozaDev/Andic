@@ -7,7 +7,7 @@
 .tablero{
     display: flex;
     flex-wrap: nowrap;
-    width: 95%;
+    width: 90%;
     height: 90vh;
     margin: auto;
     border-radius: 10px;
@@ -58,4 +58,30 @@
 .input-flex{
     display: flex;
     margin: auto;
+}
+
+.cont-btn{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.estado_1{
+    background-color: #E5E8E8;
+}
+
+.estado_2{
+    background-color: #AED6F1;
+}
+
+.estado_3{
+    background-color: #C39BD3;
+}
+
+.estado_4{
+    background-color: #229954;
+}
+
+.estado_5{
+    background-color: #CD6155;
 }
