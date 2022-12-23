@@ -3,7 +3,7 @@
 
 <div class="container h-100 mb-5 mt-3">
     <div class="row h-100" id="Select">
-        <div class="col-6">
+        <div class="col-sm-12 col-md-6">
             <div class="col-header mb-3">
                 <h4>Persona</h4>
                 <div class="body-col">
@@ -30,7 +30,7 @@
                 </table>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-sm-12 col-md-6">
             <div class="col-header mb-3">
                 <h4>Institución</h4>
                 <div class="input-group">

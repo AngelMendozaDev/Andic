@@ -7,12 +7,13 @@
 .tablero{
     display: flex;
     flex-wrap: nowrap;
-    width: 90%;
+    max-width: 90%;
     height: 90vh;
     margin: auto;
     border-radius: 10px;
     background-color: #E5E8E8;
     border: 2px solid #000;
+    overflow-x: scroll;
 }
 
 .columna{
@@ -84,4 +85,15 @@
 
 .estado_5{
     background-color: #CD6155;
+}
+
+.table-container{
+    width: 100%;
+    overflow-x: scroll;
+}
+
+@media (max-width: 700px) {
+    .columna{
+        width: 200px;
+    }
 }

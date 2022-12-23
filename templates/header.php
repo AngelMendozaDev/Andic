@@ -160,7 +160,9 @@ if (isset($_SESSION['ID'])) {
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Control de Pagina web &nbsp; <i class="fa fa-globe" aria-hidden="true"></i>
+                            <i class="fa fa-globe" aria-hidden="true"></i>
+                            &nbsp;
+                            Control de Pagina web
                         </button>
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#OptionsAccordion">

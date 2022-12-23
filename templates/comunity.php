@@ -33,27 +33,27 @@ $request = $model->getComunity();
             </div>
 
             <div class="flex-cont mb-3">
-                <div class="input-group">
+                <div class="input-group mb-3">
                     <span class="input-group-text">Nombre:</span>
                     <input type="text" name="nombre" id="nombre" class="form-control" maxlength="30" required>
                 </div>
-                <div class="input-group">
+                <div class="input-group mb-3">
                     <span class="input-group-text">Paterno:</span>
                     <input type="text" name="app" id="app" class="form-control" maxlength="25" required>
                 </div>
-                <div class="input-group">
+                <div class="input-group mb-3">
                     <span class="input-group-text">Materno:</span>
                     <input type="text" name="apm" id="apm" class="form-control" maxlength="25" required>
                 </div>
             </div>
 
             <div class="flex-cont mb-3">
-                <div class="input-group">
+                <div class="input-group mb-3">
                     <label class="input-group-text">Fecha de Nacimiento:</label>
                     <input type="date" class="form-control" name="nacimiento" id="nac" required="required">
                 </div>
 
-                <div class="input-group">
+                <div class="input-group mb-3">
                     <label class="input-group-text">Sexo:</label>
                     <select name="sexo" id="sexo" class="form-select" required>
                         <option value="" selected="true" disabled>Selecciona tu Sexo</option>
@@ -64,11 +64,11 @@ $request = $model->getComunity();
                 </div>
             </div>
             <div class="flex-cont">
-                <div class="input-group">
+                <div class="input-group mb-3">
                     <span class="input-group-text">Correo:</span>
                     <input type="mail" class="form-control" name="mail" id="mail" required>
                 </div>
-                <div class="input-group">
+                <div class="input-group mb-3">
                     <span class="input-group-text">Teléfono:</span>
                     <input type="number" class="form-control" name="phone" id="phone" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                 </div>
@@ -78,11 +78,11 @@ $request = $model->getComunity();
                 <input type="text" class="form-control" name="street" id="calle" maxlength="60" style="text-transform: uppercase;" required>
             </div>
             <div class="flex-cont">
-                <div class="input-group">
+                <div class="input-group mb-3">
                     <span class="input-group-text">Código Postal:</span>
                     <input type="number" class="form-control" name="codePos" id="codePos" maxlength="6" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                 </div>
-                <div class="input-group">
+                <div class="input-group mb-3">
                     <span class="input-group-text">Colonia:</span>
                     <select name="col" id="col" class="form-select" required>
                         <option value="" selected="true" disabled>Selecciona una Colonia</option>
@@ -91,11 +91,11 @@ $request = $model->getComunity();
             </div>
 
             <div class="flex-cont">
-                <div class="input-group">
+                <div class="input-group mb-3">
                     <span class="input-group-text">Municipio:</span>
                     <input type="text" class="form-control" id="mun" readonly>
                 </div>
-                <div class="input-group">
+                <div class="input-group mb-3">
                     <span class="input-group-text">Estado:</span>
                     <input type="text" class="form-control" id="edo" readonly>
                 </div>

@@ -66,7 +66,7 @@ $rquest = $model->getInstituciones();
                     <select class="form-select" name="tipoIns" id="tipoIns" required>
                         <option value="" selected disabled>Selecciona una opción</option>
                         <option value="1">Educación Pública</option>
-                        <option value="2">Educaciión Privada</option>
+                        <option value="2">Educación Privada</option>
                         <option value="3">PyMES</option>
                         <option value="4">Emprendimiento</option>
                         <option value="5">Salud/Bienestar</option>
@@ -103,11 +103,11 @@ $rquest = $model->getInstituciones();
                 </span>
                 <input type="text" class="form-control" maxlength="18" name="cct" id="institud" style="text-transform: uppercase;" readonly required>
             </div>
-            <div class="input-group mb-2">
+            <div class="input-group mb-2" id="servicesI">
                 <span class="input-group-text">
                     Servicio que ofrece:
                 </span>
-                <input type="text" class="form-control" maxlength="60" name="service" id="service" style="text-transform: uppercase;" required>
+                <input type="text" class="form-control" maxlength="60" name="service" id="service" placeholder="Servicios" style="text-transform: uppercase;" required>
                 <button class="btn btn-success" id="btn-services">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     &nbsp; Agregar Servicio

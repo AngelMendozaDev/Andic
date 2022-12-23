@@ -79,4 +79,22 @@ table tr{
     #table-inst{
         overflow-x: scroll;
     }
+
+    .input-flex {
+        display: block;
+    }
+
+    .input-flex .input-group {
+        margin: auto;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    #servicesI{
+        display: block;
+    }
+
+    #servicesI input{
+        width: 100%;
+    }
 }

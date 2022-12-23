@@ -120,3 +120,20 @@ DELIMITER $$
 		INSERT INTO practicas (persona, institucion, matricula, semestre, tipo, estado, inicio, fin, proy) VALUES (persona, serv, mat,sem,tipos,'1',startt,finish,proyecto);
     end
 $$
+
+
+/***************************************
+**  Noticias
+***************************************************************************/
+
+DELIMITER $$
+	CREATE PROCEDURE newNoticia(
+		in myAno year,
+        in title varchar(60),
+        in image varchar(30),
+        in des mediumtext
+    )
+    begin
+		INSERT INTO acciones (ano, titulo, multimedia, media, texto) VALUES (myAno, title,'S', image, des);
+    end
+$$
