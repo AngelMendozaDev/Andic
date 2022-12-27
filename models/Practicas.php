@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
+//error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 require_once "General.php";
 class Practicas extends General
@@ -17,10 +17,10 @@ class Practicas extends General
 
             while ($data = $request->fetch_assoc()) {
                 $json[] = array(
-                    "ID" => $data['id_p'],
-                    "name" => $data['nombre'],
-                    "app" => $data['app'],
-                    "apm" => $data['apm']
+                    "ID" => utf8_encode($data['id_p']),
+                    "name" => utf8_encode($data['nombre']),
+                    "app" => utf8_encode($data['app']),
+                    "apm" => utf8_encode($data['apm'])
                 );
             }
 
@@ -43,9 +43,9 @@ class Practicas extends General
             while ($data = $request->fetch_assoc()) {
                 if ($data['estado'] == 1) {
                     $json[] = array(
-                        "clave" => $data['clave'],
-                        "name" => $data['nombre_ins'],
-                        "dir" => $data['repre']
+                        "clave" => utf8_encode($data['clave']),
+                        "name" => utf8_encode($data['nombre_ins']),
+                        "dir" => utf8_encode($data['repre'])
                     );
                 }
             }
@@ -69,8 +69,8 @@ class Practicas extends General
         if ($res->num_rows > 0) {
             while ($item = $res->fetch_assoc()) {
                 $json[] = array(
-                    "id" => $item['registro_c'],
-                    "servicio" => $item['service']
+                    "id" => utf8_encode($item['registro_c']),
+                    "servicio" => utf8_encode($item['service'])
                 );
             }
 
@@ -120,8 +120,8 @@ class Practicas extends General
  **********************/
     public function getPracticas(){
         $conn = General::getConexion();
-
-        $query = $conn->prepare("SELECT * FROM getPracticasAct");
+        
+        $query = $conn->prepare("SELECT * FROM getpracticasact");
         $query->execute();
         $request = $query->get_result();
 

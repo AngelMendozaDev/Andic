@@ -8,7 +8,7 @@ class Comunity extends General
     public function serchCP($value)
     {
         $conec = General::getConexion();
-        $query = $conec->prepare("SELECT cp.*, e.estado_n FROM cp_col AS cp INNER JOIN estado AS e ON e.id_estado = cp.estado WHERE cp.cp =?");
+        $query = $conec->prepare("SELECT cp.*, e.estado_n FROM cp_col AS cp INNER JOIN estado AS e ON e.id_estado = cp.estado WHERE cp.cp = ?");
         $query->bind_param('s', $value);
         $query->execute();
         $request = $query->get_result();
@@ -17,12 +17,13 @@ class Comunity extends General
         if ($request->num_rows > 0) {
             while ($data = $request->fetch_assoc()) {
                 $json[] = array(
-                    "folio" => $data['n_registro'],
-                    "col" => $data['col'],
-                    "mun" => $data['mun'],
-                    "edo" => $data['estado_n']
+                    "folio" => utf8_encode($data['n_registro']),
+                    "col" => utf8_encode($data['col']),
+                    "mun" => utf8_encode($data['mun']),
+                    "edo" => utf8_encode($data['estado_n'])
                 );
             }
+            
             return json_encode($json);
         }
 

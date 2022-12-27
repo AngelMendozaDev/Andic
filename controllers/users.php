@@ -1,4 +1,5 @@
 <?php 
+    //print_r($_POST);
     require_once "../models/Comunity.php";
     $model = new Comunity();
     //print_r($_POST);
@@ -8,6 +9,7 @@
         case 'getCol':
             echo ($model->serchCP($_POST['cp']));
         break;
+        
         case 'getFolio':
             echo ( $model->getFolio());
         break;

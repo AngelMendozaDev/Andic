@@ -4,13 +4,14 @@ function getCP(cp) {
         type: 'POST',
         data: { Action: "getCol", cp },
         success: function (response) {
+            console.log(response);
             $('#col').empty()
             $('#col').append("<option value='' selected='true' disabled>Selecciona una Colonia</option>");
             if (response.trim() == -1) {
                 $('#codePos').addClass("error")
             }
             else {
-                $('#codePos').removeClass("error")
+                $('#codePos').removeClass("error");
                 data = JSON.parse(response);
                 $.each(data, function (key, item) {
                     $('#col').append("<option value='" + item.folio + "'>" + item.col + "</option>")

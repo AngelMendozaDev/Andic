@@ -1,0 +1,25 @@
+[23-Dec-2022 05:02:42 UTC] PHP Fatal error:  Cannot use [] for reading in /home/lumegamx/app.andic.org.mx/models/Comunity.php on line 26
+[23-Dec-2022 05:02:48 UTC] PHP Fatal error:  Cannot use [] for reading in /home/lumegamx/app.andic.org.mx/models/Comunity.php on line 26
+[23-Dec-2022 05:07:01 UTC] PHP Notice:  Array to string conversion in /home/lumegamx/app.andic.org.mx/models/Comunity.php on line 26
+[23-Dec-2022 05:07:07 UTC] PHP Notice:  Array to string conversion in /home/lumegamx/app.andic.org.mx/models/Comunity.php on line 26
+[23-Dec-2022 05:07:34 UTC] PHP Notice:  Array to string conversion in /home/lumegamx/app.andic.org.mx/controllers/users.php on line 10
+[23-Dec-2022 05:14:22 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function utf8ize() in /home/lumegamx/app.andic.org.mx/models/Comunity.php:27
+Stack trace:
+#0 /home/lumegamx/app.andic.org.mx/controllers/users.php(10): Comunity->serchCP('13450')
+#1 {main}
+  thrown in /home/lumegamx/app.andic.org.mx/models/Comunity.php on line 27
+[23-Dec-2022 05:14:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function utf8ize() in /home/lumegamx/app.andic.org.mx/models/Comunity.php:27
+Stack trace:
+#0 /home/lumegamx/app.andic.org.mx/controllers/users.php(10): Comunity->serchCP('13450')
+#1 {main}
+  thrown in /home/lumegamx/app.andic.org.mx/models/Comunity.php on line 27
+[23-Dec-2022 05:14:40 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function utf8ize() in /home/lumegamx/app.andic.org.mx/models/Comunity.php:27
+Stack trace:
+#0 /home/lumegamx/app.andic.org.mx/controllers/users.php(10): Comunity->serchCP('13450')
+#1 {main}
+  thrown in /home/lumegamx/app.andic.org.mx/models/Comunity.php on line 27
+[23-Dec-2022 05:15:25 UTC] PHP Warning:  utf8_encode() expects parameter 1 to be string, array given in /home/lumegamx/app.andic.org.mx/models/Comunity.php on line 27
+[23-Dec-2022 05:15:34 UTC] PHP Warning:  utf8_encode() expects parameter 1 to be string, array given in /home/lumegamx/app.andic.org.mx/models/Comunity.php on line 27
+[23-Dec-2022 05:15:35 UTC] PHP Warning:  utf8_encode() expects parameter 1 to be string, array given in /home/lumegamx/app.andic.org.mx/models/Comunity.php on line 27
+[23-Dec-2022 05:16:05 UTC] PHP Warning:  utf8_encode() expects parameter 1 to be string, array given in /home/lumegamx/app.andic.org.mx/models/Comunity.php on line 27
+[23-Dec-2022 05:16:10 UTC] PHP Warning:  utf8_encode() expects parameter 1 to be string, array given in /home/lumegamx/app.andic.org.mx/models/Comunity.php on line 27

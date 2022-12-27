@@ -2,9 +2,9 @@
 class General
 {
     private $host = "localhost";
-    private $user = "root";
-    private $pass = "LuisA5841@&";
-    private $dbName = "andic";
+    private $user = "root"; //"lumegamx_user";
+    private $pass = "LuisA5841@&"; //"LuisA58410@";
+    private $dbName ="andic"; //"lumegamx_andic";
     private $conn = false;
 
     public function __construct()
@@ -13,8 +13,9 @@ class General
         if (!$this->conn) {
             $this->conn = false;
             return $this->conn;
-        } else
+        } else{
             return $this->conn;
+        }
     }
 
     public function getConexion(){
